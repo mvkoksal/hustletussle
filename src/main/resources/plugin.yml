@@ -1,0 +1,10 @@
+name: HustleTusslePlugin
+version: '${version}'
+main: io.github.mvkoksal.hustleTusslePlugin.HustleTusslePlugin
+api-version: '26.1.2'
+load: POSTWORLD
+
+commands:
+  tussle:
+    description: Start the HustleTussle game
+    usage: /<command>
