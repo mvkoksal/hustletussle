@@ -5,6 +5,7 @@ import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
@@ -64,7 +65,6 @@ public class TaskInventory {
             }
         }
     }
-
     // NEW CLASS - tasklist
     //Shuffles the easy, medium and hard task queues, and initializes the chest with tasks.
     // public void initializeChest

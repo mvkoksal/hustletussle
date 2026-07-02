@@ -12,6 +12,7 @@ public final class HustleTusslePlugin extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         Bukkit.getPluginManager().registerEvents(this, this);
+        Bukkit.getPluginManager().registerEvents(new CommandTussle(), this);
         this.getCommand("tussle").setExecutor(new CommandTussle());
     }
 

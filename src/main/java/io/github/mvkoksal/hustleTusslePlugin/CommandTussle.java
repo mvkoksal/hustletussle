@@ -6,11 +6,18 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.Collection;
+import java.util.EventListener;
 
-    public class CommandTussle implements CommandExecutor {
+public class CommandTussle implements CommandExecutor, Listener {
+
+    public static TaskInventory taskInventory;
+    public static ItemStack paper;
 
         // This method is called, when somebody uses our command
         @Override
@@ -27,9 +34,21 @@ import java.util.Collection;
                 ItemStack shovel = new ItemStack(Material.STONE_SHOVEL);
                 ItemStack beef = new ItemStack(Material.COOKED_BEEF);
                 beef.setAmount(20);
+                paper = new ItemStack(Material.PAPER);
 
-                player.getInventory().addItem(sword, pickaxe, axe, shovel, beef);
+                player.getInventory().addItem(sword, pickaxe, axe, shovel, beef, paper);
+
+                taskInventory = new TaskInventory();
             }
             return true;
         }
-    }
+
+        @EventHandler
+        public void onInventoryRightClick(InventoryClickEvent event) {
+            int slot = event.getSlot();
+            if(taskInventory.inventory.getItem(slot) == paper && event.isRightClick()) {
+                event.getWhoClicked().openInventory(taskInventory.inventory);
+            }
+        }
+
+}
